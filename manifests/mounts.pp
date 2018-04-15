@@ -16,9 +16,11 @@ class cult_dockerswarm::mounts (
     }
 
     file_line { "fstab entry for ${name}" :
-      path   => '/etc/fstab',
-      line   => "${$share['source']} ${$share['target']} ${$share['type']} ${$share['opts']}",
-      notify => Exec['Re-mount File Systems'],
+      ensure             => present,
+      path               => '/etc/fstab',
+      line               => "${$share['source']} ${$share['target']} ${$share['type']} ${$share['opts']}",
+      notify             => Exec['Re-mount File Systems'],
+      append_on_no_match => true,
     }
   }
 
