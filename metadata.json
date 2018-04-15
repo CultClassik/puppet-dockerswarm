@@ -1,0 +1,50 @@
+{
+  "name": "cultclassik-cult_dockerswarm",
+  "version": "0.1.0",
+  "author": "Chris Diehl",
+  "summary": "",
+  "license": "",
+  "source": "",
+  "dependencies": [
+
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "16.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.7.0 < 6.0.0"
+    },
+    {
+      "name": "puppetlabs-docker",
+      "version_requirement": ">= 1.0.0 < 1.1.1"
+    }
+  ],
+  "pdk-version": "1.4.1",
+  "template-url": "file://C:/PROGRA~1/PUPPET~1/DevelopmentKit/share/cache/pdk-templates.git",
+  "template-ref": "1.4.1-0-g52adbbb"
+}
