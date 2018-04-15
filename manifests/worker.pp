@@ -9,13 +9,22 @@
 class cult_dockerswarm::worker (
   String $ip_address = $facts['ipaddress'],
 ){
-  if $::cult_dockerswarm::is_worker == true {
-    docker::swarm { "${facts['hostname']}-swarm-node" :
-      join           => true,
-      advertise_addr => $ip_address,
-      listen_addr    => $ip_address,
-      manager_ip     => "${::cult_dockerswarm::leader_ip}:${::cult_dockerswarm::leader_port}",
-      token          => $::cult_dockerswarm::worker_token,
-    }
+
+  $token = $::cult_dockerswarm::is_manager ? {
+    true  => $::cult_dockerswarm::manager_token,
+    false => $::cult_dockerswarm::worker_token,
   }
+  
+  docker::swarm { "${facts['hostname']}-swarm-node" :
+    join           => true,
+    advertise_addr => $ip_address,
+    listen_addr    => $ip_address,
+    manager_ip     => "${::cult_dockerswarm::leader_ip}:${::cult_dockerswarm::leader_port}",
+     token          => $token,
+  }
+
+  if $::cult_dockerswarm::is_manager == true {
+    include ::cult_dockerswarm::networks
+  }
+
 }
