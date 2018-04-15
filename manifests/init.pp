@@ -14,7 +14,6 @@ class cult_dockerswarm (
   Boolean $is_worker = false,
   String $manager_token = 'undef',
   String $worker_token = 'undef',
-  String $storage_base_path = 'undef',
 ){
 
   require docker
