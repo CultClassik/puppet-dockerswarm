@@ -18,7 +18,7 @@ class cult_dockerswarm (
   require docker
   require ::cult_dockerswarm::mounts
 
-  if $::cult_dockerswarm::is_leader = true {
+  if $::cult_dockerswarm::is_leader == true {
     include ::cult_dockerswarm::leader
   } else {
     include ::cult_dockerswarm::worker
