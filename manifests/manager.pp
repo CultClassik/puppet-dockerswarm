@@ -9,7 +9,6 @@
 class cult_dockerswarm::manager (
   String $ip_address = $facts['ipaddress'],
 ){
-
   if $::cult_dockerswarm::is_manager == true {
     include cult_dockerswarm::networks
 
@@ -20,8 +19,6 @@ class cult_dockerswarm::manager (
       manager_ip     => "${::cult_dockerswarm::leader_ip}:${::cult_dockerswarm::leader_port}",
       token          => $::cult_dockerswarm::manager_token,
     }
-
     -> Class['::cult_dockerswarm::networks']
-
   }
 }
