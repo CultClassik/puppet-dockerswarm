@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'gmf_dockerswarm::networks' do
+describe 'cult_dockerswarm::networks' do
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }

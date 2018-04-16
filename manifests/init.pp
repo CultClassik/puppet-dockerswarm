@@ -15,7 +15,6 @@ class cult_dockerswarm (
   String $worker_token = 'undef',
 ){
 
-  require docker
   require ::cult_dockerswarm::mounts
 
   if $::cult_dockerswarm::is_leader == true {
