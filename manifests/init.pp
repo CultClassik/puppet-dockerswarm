@@ -7,20 +7,20 @@
 # @example
 #   include cult_dockerswarm
 class cult_dockerswarm (
-  String $leader_ip = 'undef',
-  String $leader_port = '2377',
   Boolean $is_leader = false,
   Boolean $is_manager = false,
+  String $leader_ip = 'undef',
+  String $leader_port = '2377',
   String $manager_token = 'undef',
   String $worker_token = 'undef',
 ){
 
-  require ::cult_dockerswarm::mounts
+  require cult_dockerswarm::mounts
 
-  if $::cult_dockerswarm::is_leader == true {
-    include ::cult_dockerswarm::leader
+  if $cult_dockerswarm::is_leader == true {
+    include cult_dockerswarm::leader
   } else {
-    include ::cult_dockerswarm::worker
+    include cult_dockerswarm::worker
   }
 
 }

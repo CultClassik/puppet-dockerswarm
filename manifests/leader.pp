@@ -9,7 +9,7 @@
 class cult_dockerswarm::leader (
   String $ip_address = $facts['ipaddress'],
 ){
-  if $::cult_dockerswarm::is_leader == true {
+  if $cult_dockerswarm::is_leader == true {
     include cult_dockerswarm::networks
 
     docker::swarm { "${facts['hostname']}-swarm-node" :
@@ -17,6 +17,6 @@ class cult_dockerswarm::leader (
       advertise_addr => $ip_address,
       listen_addr    => $ip_address,
     }
-    -> Class['::cult_dockerswarm::networks']
+    -> Class['cult_dockerswarm::networks']
   }
 }
