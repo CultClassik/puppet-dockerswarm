@@ -10,11 +10,13 @@ class cult_dockerswarm::networks (
   Hash $networks,
 ){
 
-  $networks.each |String $name, Hash $network| {
-    docker_network { $name :
-      ensure  => $network['ensure'],
-      driver  => $network['driver'],
-      options => $network['options'],
+  if $networks != Undef {
+    $networks.each |String $name, Hash $network| {
+      docker_network { $name :
+        ensure  => $network['ensure'],
+        driver  => $network['driver'],
+        options => $network['options'],
+      }
     }
   }
 
